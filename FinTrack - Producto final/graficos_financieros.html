@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráficos Financieros</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Gráficos Financieros</h1>
+    <canvas id="barChart" width="400" height="200"></canvas>
+    <canvas id="pieChart" width="400" height="200"></canvas>
+
+    <script>
+        // Datos de ejemplo (extraídos del archivo JSON en backend PHP)
+        const data = {
+            categories: ['Alimentos', 'Transporte', 'Entretenimiento'],
+            amounts: [200, 150, 300]
+        };
+
+        // Gráfico de barras
+        new Chart(document.getElementById('barChart'), {
+            type: 'bar',
+            data: {
+                labels: data.categories,
+                datasets: [{
+                    label: 'Gastos por Categoría',
+                    data: data.amounts,
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                }]
+            }
+        });
+
+        // Gráfico de pastel
+        new Chart(document.getElementById('pieChart'), {
+            type: 'pie',
+            data: {
+                labels: data.categories,
+                datasets: [{
+                    data: data.amounts,
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
